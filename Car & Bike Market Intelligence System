@@ -1,0 +1,83 @@
+
+CREATE TABLE Brand (
+    brand_id INT PRIMARY KEY,
+    brand_name VARCHAR(50),
+    country VARCHAR(50),
+    type VARCHAR(20) -- Car / Bike
+);
+
+CREATE TABLE Model (
+    model_id INT PRIMARY KEY,
+    brand_id INT,
+    model_name VARCHAR(50),
+    launch_date DATE,
+    segment VARCHAR(50), -- SUV, Sedan, Hatchback
+    fuel_type VARCHAR(20),
+    FOREIGN KEY (brand_id) REFERENCES Brand(brand_id)
+);
+
+CREATE TABLE PriceHistory (
+    price_id INT PRIMARY KEY,
+    model_id INT,
+    price DECIMAL(10,2),
+    effective_date DATE,
+    FOREIGN KEY (model_id) REFERENCES Model(model_id)
+);
+
+
+CREATE TABLE Features (
+    feature_id INT PRIMARY KEY,
+    feature_name VARCHAR(100)
+);
+
+CREATE TABLE ModelFeatures (
+    id INT PRIMARY KEY,
+    model_id INT,
+    feature_id INT,
+    FOREIGN KEY (model_id) REFERENCES Model(model_id),
+    FOREIGN KEY (feature_id) REFERENCES Features(feature_id)
+);
+
+CREATE TABLE Colors (
+    color_id INT PRIMARY KEY,
+    color_name VARCHAR(50)
+);
+
+CREATE TABLE ModelColors (
+    id INT PRIMARY KEY,
+    model_id INT,
+    color_id INT,
+    FOREIGN KEY (model_id) REFERENCES Model(model_id),
+    FOREIGN KEY (color_id) REFERENCES Colors(color_id)
+);
+
+CREATE TABLE City (
+    city_id INT PRIMARY KEY,
+    city_name VARCHAR(50)
+);
+
+CREATE TABLE ModelCity (
+    id INT PRIMARY KEY,
+    model_id INT,
+    city_id INT,
+    FOREIGN KEY (model_id) REFERENCES Model(model_id),
+    FOREIGN KEY (city_id) REFERENCES City(city_id)
+);
+
+CREATE TABLE ModelVersion (
+    version_id INT PRIMARY KEY,
+    model_id INT,
+    version_name VARCHAR(50),
+    is_latest BIT,
+    FOREIGN KEY (model_id) REFERENCES Model(model_id)
+);
+
+CREATE TABLE UpcomingModels (
+    upcoming_id INT PRIMARY KEY,
+    brand_id INT,
+    model_name VARCHAR(50),
+    expected_launch DATE,
+    expected_price DECIMAL(10,2),
+    features VARCHAR(200),
+    FOREIGN KEY (brand_id) REFERENCES Brand(brand_id)
+);
