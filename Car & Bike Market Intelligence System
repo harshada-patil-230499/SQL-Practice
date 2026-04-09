@@ -81,3 +81,86 @@ CREATE TABLE UpcomingModels (
     features VARCHAR(200),
     FOREIGN KEY (brand_id) REFERENCES Brand(brand_id)
 );
+
+--INSERT DATA
+--Table_1 Brand
+
+INSERT INTO Brand VALUES
+(1,'Tesla','USA','Car'),
+(2,'BMW','Germany','Car'),
+(3,'Jaguar','UK','Car'),
+(4,'Tata','India','Car'),
+(5,'Kia','Korea','Car'),
+(6,'Yamaha','Japan','Bike'),
+(7,'Honda','Japan','Bike'),
+(8,'Royal Enfield','India','Bike');
+
+
+--Table_2 Model
+
+INSERT INTO Model VALUES
+(101,1,'Model S','2023-01-01','Sedan','Electric'),
+(102,1,'Model 3','2022-05-01','Sedan','Electric'),
+(103,2,'X5','2023-03-10','SUV','Petrol'),
+(104,4,'Nexon','2022-02-15','SUV','Diesel'),
+(105,5,'Seltos','2023-04-01','SUV','Petrol'),
+(106,6,'R15','2022-06-01','Sports','Petrol'),
+(107,7,'Shine','2023-01-10','Commuter','Petrol');
+
+--Table_3 PriceHistory
+
+INSERT INTO PriceHistory VALUES
+(1,101,8000000,'2023-01-01'),
+(2,101,7500000,'2024-01-01'),
+(3,104,900000,'2022-01-01'),
+(4,104,850000,'2023-01-01');
+
+--Table_3 Features
+INSERT INTO Features VALUES
+(1,'Sunroof'),
+(2,'ABS'),
+(3,'Airbags'),
+(4,'Touchscreen'),
+(5,'Autopilot');
+
+--Table_4 ModelFeatures
+INSERT INTO ModelFeatures VALUES
+(1,101,5),
+(2,101,4),
+(3,104,2),
+(4,104,3);
+
+--Table_5 colors
+
+INSERT INTO Colors VALUES
+(1,'Red'),
+(2,'Black'),
+(3,'White'),
+(4,'Blue');
+
+--Table_6 ModelColors
+
+INSERT INTO ModelColors VALUES
+(1,101,1),
+(2,101,2),
+(3,104,3);
+
+--Table_7 City
+INSERT INTO City VALUES
+(1,'Mumbai'),
+(2,'Pune'),
+(3,'Delhi'),
+(4,'Bangalore');
+
+--Table_8 ModelCity
+INSERT INTO ModelCity VALUES
+(1,101,1),
+(2,101,2),
+(3,104,3);
+
+--Table_9 UpcomingModels
+INSERT INTO UpcomingModels VALUES
+(1,1,'Model X 2025','2025-12-01',9000000,'Advanced Autopilot'),
+(2,4,'Nexon EV 2025','2025-08-01',1200000,'EV upgrade');
+
+
